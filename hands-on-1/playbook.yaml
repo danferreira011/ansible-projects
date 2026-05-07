@@ -1,0 +1,26 @@
+---
+- name: Instalação do Nginx e configuração de uma página estática
+  hosts: all
+  become: true #root user
+
+  tasks:
+    - name: Copiar a página estática
+      ansible.builtin.copy:
+        src: ./index.html
+        dest: /home/ubuntu/index.html
+
+    - name: Instalar Nginx      
+      ansible.builtin.apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: Copiar o arquivo nginx.conf para o Servidor
+      ansible.builtin.copy:
+        src: ./nginx.conf
+        dest: /etc/nginx/nginx.conf
+
+    - name: Reiniciar o serviço do Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
