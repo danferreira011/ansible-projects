@@ -1,0 +1,9 @@
+---
+- name: Exibindo Mensagem
+  hosts: localhost
+  vars:
+    name: Danilo
+  tasks:
+    - name: Exibir mensagem
+      ansible.builtin.debug:
+        msg: "Hello, {{ name }}. Welcome to Ansible!"

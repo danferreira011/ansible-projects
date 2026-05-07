@@ -1,0 +1,11 @@
+---
+- name: Resultado de um Comando
+  hosts: all  
+  tasks:
+    - name: Executar um comando e registrar o resultado
+      shell: ps      
+      register: ps_result
+
+    - name: Exibir o resultado do comando
+      debug:
+        var: "{{ps_result.stdout}}"

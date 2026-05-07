@@ -1,0 +1,7 @@
+---
+- name: Exibindo Mensagem
+  hosts: all  
+  tasks:
+    - name: Exibir mensagem
+      ansible.builtin.debug:
+        msg: "Hello, {{ name }}. Welcome to Ansible!"
